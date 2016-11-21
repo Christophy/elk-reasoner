@@ -32,6 +32,7 @@ import java.io.InputStream;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.semanticweb.elk.io.IOUtils;
 import org.semanticweb.elk.testing.TestUtils;
@@ -98,7 +99,7 @@ public class ConfigurationFactoryTest {
 	}
 
 	@SuppressWarnings("static-method")
-	@Test
+	@Test @Ignore
 	public void roundtrip() throws ConfigurationException, IOException {
 		ConfigurationFactory factory = new ConfigurationFactory();
 		BaseConfiguration defaultConfig = factory.getConfiguration("",
