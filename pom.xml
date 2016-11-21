@@ -382,6 +382,14 @@
 					<autoReleaseAfterClose>false</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<!-- Travis build workaround -->
+					<argLine>-Xms512m -Xmx2048m</argLine>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
