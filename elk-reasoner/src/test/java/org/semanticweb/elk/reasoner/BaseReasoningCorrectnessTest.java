@@ -71,8 +71,18 @@ public abstract class BaseReasoningCorrectnessTest<I extends TestInput, AO exten
 		return delegate_;
 	}
 
+	// Declare the size
+	final static int megaBytes = 1024 * 1024;
+
 	@Before
 	public void before() throws Exception {
+		// print memory usage
+		Runtime runtime = Runtime.getRuntime();
+
+		System.out.println("Memory (MB) Used/Total/Max: "
+				+ (runtime.totalMemory() - runtime.freeMemory()) / megaBytes
+				+ "/" + runtime.totalMemory() / megaBytes + "/"
+				+ runtime.maxMemory() / megaBytes);
 		org.junit.Assume.assumeFalse(ignore(manifest_.getInput()));
 		delegate_.before();
 	}
