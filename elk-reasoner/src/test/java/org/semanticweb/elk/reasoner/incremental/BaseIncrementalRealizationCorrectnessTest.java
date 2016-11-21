@@ -66,12 +66,23 @@ public abstract class BaseIncrementalRealizationCorrectnessTest<A> extends
 		super(testManifest, testDelegate);
 	}
 
+	// Declare the size
+	final static int megaBytes = 1024 * 1024;
+
+	
 	@Override
 	protected void correctnessCheck(
 			final InstanceTaxonomyTestOutput<?> actualOutput,
 			final InstanceTaxonomyTestOutput<?> expectedOutput)
 			throws ElkException {
 
+			// print memory usage
+			Runtime runtime = Runtime.getRuntime();
+			System.out.println("Memory (MB) Used/Total/Max: "
+					+ (runtime.totalMemory() - runtime.freeMemory()) / megaBytes
+					+ "/" + runtime.totalMemory() / megaBytes + "/"
+					+ runtime.maxMemory() / megaBytes);
+		
 		final InstanceTaxonomy<?, ?> expected = expectedOutput.getTaxonomy();
 
 		final InstanceTaxonomy<?, ?> incremental = actualOutput.getTaxonomy();
