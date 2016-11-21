@@ -3,8 +3,6 @@ language: java
 git:
   depth: 3
 
-sudo: required
-
 matrix:
   include:
    - jdk: openjdk6
