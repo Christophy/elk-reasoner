@@ -700,9 +700,13 @@ public class ElkReasoner implements OWLReasoner {
 		int filled = 0;
 		int version[] = new int[4];
 		if (versionString != null) {
-			splitted = versionString.split("\\.");
+			splitted = versionString.replaceAll("[^\\d.]", "").split("\\.");
 			while (filled < splitted.length) {
-				version[filled] = Integer.parseInt(splitted[filled]);
+				String part = splitted[filled];
+				if (part.length() > 8) {
+					part = part.substring(0, 8);
+				}
+				version[filled] = Integer.parseInt(part);
 				filled++;
 			}
 		}
